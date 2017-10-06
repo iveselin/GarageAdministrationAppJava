@@ -12,9 +12,10 @@ public class Tehnician extends Person {
     }
 
     @Override
-    void doWork() {
-        System.out.println("This tehnician needed " + numOfAprentices + "and his work costs " + workCost + "$");
-        System.out.println();
+    public void doWork() {
+        // TODO: 06/10/2017 find yourself some apprentices and do the work 
+        System.out.println("This tehnician needed " + numOfAprentices + " apprentice and his work costs " + workCost + "$");
         addWorkHours(1);
+        
     }
 }

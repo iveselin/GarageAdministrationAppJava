@@ -4,6 +4,7 @@ import hr.ferit.inventory.*;
 import hr.ferit.staff.Apprentice;
 import hr.ferit.staff.FieldOfWorkEnum;
 import hr.ferit.staff.Tehnician;
+import hr.ferit.utilities.GarageCreationUtil;
 import hr.ferit.working_on.Car;
 
 import java.util.ArrayList;
@@ -15,30 +16,37 @@ public class Garage {
     private List<Tehnician> tehnicians = new ArrayList<>();
     private List<ReusableItem> reusableItems = new ArrayList<>();
     private List<ExpendableItem> expendableItems = new ArrayList<>();
-    private InfrastructureItem placeToItem = new InfrastructureItem("COBE mechanic and bodyshop");
+    private InfrastructureItem placeToWork = new InfrastructureItem("COBE mechanic and bodyshop");
 
     public Garage() {
 
-        apprentices.add(new Apprentice("Ivan", FieldOfWorkEnum.BODYWORKER, "HR12312313"));
-        apprentices.add(new Apprentice("Tomislav", FieldOfWorkEnum.BODYWORKER, "HR123456789"));
-        apprentices.add(new Apprentice("John", FieldOfWorkEnum.MECHANIC, "HR12312313"));
-
-        tehnicians.add(new Tehnician("Joseph", FieldOfWorkEnum.MECHANIC, "HR987654321", 1));
-        tehnicians.add(new Tehnician("Mladen", FieldOfWorkEnum.BODYWORKER, "HR987654321", 2));
-
-        reusableItems.add(new ReusableItem("Wrench 12", 12, ReusableTypeEnum.WRENCH));
-        reusableItems.add(new ReusableItem("Wrench 17", 17, ReusableTypeEnum.WRENCH));
-        reusableItems.add(new ReusableItem("Hammer 0.5", 0.5, ReusableTypeEnum.HAMMER));
-        reusableItems.add(new ReusableItem("Hammer 1.5", 1.5, ReusableTypeEnum.HAMMER));
-        reusableItems.add(new ReusableItem("Spraygun", 1, ReusableTypeEnum.SPRAYGUN));
-        reusableItems.add(new ReusableItem("Sander", 1, ReusableTypeEnum.SANDER));
-
-        expendableItems.add(new ExpendableItem("Blue paint", ExpendableTypeEnum.SPRAYPAINT));
-        expendableItems.add(new ExpendableItem("Sandpaper 200", ExpendableTypeEnum.SANDPAPER));
+        apprentices = GarageCreationUtil.createApprentices();
+        tehnicians = GarageCreationUtil.createTehnicians();
+        reusableItems = GarageCreationUtil.createReusableItems();
+        expendableItems = GarageCreationUtil.createExpendableItems();
 
     }
 
     public void fixCar(Car inputCar) {
 
+        switch (inputCar.getWorkNeeded()) {
+            case MECHANIC:
+                // TODO: 06/10/2017 find a mechanic(he will find apprentice), then give them the car so they can fix it
+                for (Tehnician tehnician : tehnicians) {
+
+                    if (tehnician.getFieldOFWork() == FieldOfWorkEnum.MECHANIC) {
+                        tehnician.doWork();
+                    }
+                }
+                break;
+            case PAINTJOB:
+                // TODO: 06/10/2017 find bodyworker and his apprentice, give them the car so they fix it
+                break;
+            case BOTH:
+                // TODO: 06/10/2017 maybe delete this from project
+                break;
+            default:
+                // TODO: 06/10/2017 what if car is null??
+        }
     }
 }

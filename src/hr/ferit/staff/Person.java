@@ -7,7 +7,7 @@ abstract public class Person {
     private String accountIBAN;
     private byte workHours;
 
-    public Person(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN, byte workHours) {
+    Person(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN, byte workHours) {
         this.employeeName = employeeName;
         this.fieldOFWork = fieldOFWork;
         this.accountIBAN = accountIBAN;
