@@ -1,4 +1,4 @@
-package hr.ferit;
+package hr.ferit.working_on;
 
 public enum  WorkNeededEnum {
     MECHANIC,

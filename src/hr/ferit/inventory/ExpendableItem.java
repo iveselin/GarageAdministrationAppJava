@@ -1,19 +1,52 @@
 package hr.ferit.inventory;
 
-public class ExpendableItem extends Item implements WorkingItem{
-    private double quantityPercentageLeft;
+public class ExpendableItem extends Item implements WorkingItem {
 
-    public ExpendableItem(String itemID, String itemName, double quantityPercentageLeft) {
-        super(itemID, itemName);
-        this.quantityPercentageLeft = quantityPercentageLeft;
+    private ExpendableTypeEnum expendableType;
+    private int quantityLeft;
+
+
+    public ExpendableItem(String itemName, ExpendableTypeEnum expendableType) {
+
+        super(itemName);
+        this.expendableType = expendableType;
+
+        switch (expendableType) {
+            case SPRAYPAINT:
+                quantityLeft = 5;
+                break;
+            case SANDPAPER:
+                quantityLeft = 2;
+                break;
+            default:
+                quantityLeft = 0;
+                break;
+        }
     }
 
-    public double getQuantityPercentageLeft() {
-        return quantityPercentageLeft;
+    public int getQuantityLeft() {
+        return quantityLeft;
     }
 
     @Override
     public void beUsed() {
-        // TODO: 05/10/2017 implement how is this going to affect object state
+        System.out.println(expendableType + "was used and it costs " + this.getUseCost());
+        quantityLeft--;
+    }
+
+
+    public double getUseCost() {
+        switch (expendableType) {
+
+            case SANDPAPER:
+                return 0.50;
+
+            case SPRAYPAINT:
+                return 2.80;
+
+            default:
+                return 0.00;
+
+        }
     }
 }

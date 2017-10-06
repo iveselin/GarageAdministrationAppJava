@@ -33,5 +33,9 @@ abstract public class Person {
 
     abstract void doWork();
 
+    public void addWorkHours(int hoursToAdd) {
+        workHours += hoursToAdd;
+    }
+
 
 }

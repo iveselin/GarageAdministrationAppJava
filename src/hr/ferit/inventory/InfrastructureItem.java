@@ -2,15 +2,20 @@ package hr.ferit.inventory;
 
 public class InfrastructureItem extends Item {
 
-    private boolean currentlyAvailible;
+    private boolean currentlyAvailable;
 
-    public InfrastructureItem(String itemID, String itemName, boolean currentlyAvailible) {
-        super(itemID, itemName);
-        this.currentlyAvailible = currentlyAvailible;
+    public InfrastructureItem(String itemName) {
+        super(itemName);
+        this.currentlyAvailable = true;
     }
 
-    public boolean isCurrentlyAvailible() {
-        return currentlyAvailible;
+    public boolean isCurrentlyAvailable() {
+
+        return currentlyAvailable;
+    }
+
+    public void setCurrentlyAvailable(boolean currentlyAvailable) {
+        this.currentlyAvailable = currentlyAvailable;
     }
 
 }
