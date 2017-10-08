@@ -9,8 +9,13 @@ public class Main {
 
         Garage myGarage = new Garage();
         // TODO: 06/10/2017 make simple menu with options calculate sallary, calculate car cost, input new car and then make him input car data
-        Car qlientCar = new Car("Ranko", "ranko@ranko.hr", WorkNeededEnum.MECHANIC);
-        myGarage.fixCar(qlientCar);
+        Car qlientCar1 = new Car("Ranko", "ranko@ranko.hr", WorkNeededEnum.MECHANIC);
+        Car qlientCar2 = new Car("Ranko", "ranko@ranko.hr", WorkNeededEnum.PAINTJOB);
+        Car qlientCar3 = new Car("Ranko", "ranko@ranko.hr", WorkNeededEnum.BOTH);
+
+        myGarage.fixCar(qlientCar1);
+        myGarage.fixCar(qlientCar2);
+        myGarage.fixCar(qlientCar3);
 
     }
 }

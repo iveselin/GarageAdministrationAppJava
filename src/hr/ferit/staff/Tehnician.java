@@ -1,6 +1,8 @@
 package hr.ferit.staff;
 
 
+import hr.ferit.working_on.Car;
+
 public class Tehnician extends Person {
 
     private int numOfAprentices;
@@ -12,10 +14,14 @@ public class Tehnician extends Person {
     }
 
     @Override
-    public void doWork() {
-        // TODO: 06/10/2017 find yourself some apprentices and do the work 
-        System.out.println("This tehnician needed " + numOfAprentices + " apprentice and his work costs " + workCost + "$");
-        addWorkHours(1);
-        
+    public void doWork(Car carToFix) {
+        // TODO: 8.10.2017. find apprentice!!!
+
+        String outputString = String.format("Tehnician %s worked on the car and his work costs %d. He also needed %d apprentices:",
+                this.getEmployeeName(), workCost, numOfAprentices);
+        System.out.println(outputString);
+        this.addWorkHours(1);
+        carToFix.setFixed(true);
+
     }
 }

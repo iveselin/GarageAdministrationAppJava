@@ -1,5 +1,7 @@
 package hr.ferit.staff;
 
+import hr.ferit.working_on.Car;
+
 abstract public class Person {
 
     private String employeeName;
@@ -31,7 +33,7 @@ abstract public class Person {
     }
 
 
-    abstract void doWork();
+    abstract void doWork(Car inputCar);
 
     public void addWorkHours(int hoursToAdd) {
         workHours += hoursToAdd;

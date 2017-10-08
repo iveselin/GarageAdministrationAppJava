@@ -1,5 +1,7 @@
 package hr.ferit.staff;
 
+import hr.ferit.working_on.Car;
+
 public class Apprentice extends Person {
 
     private boolean isAvailable;
@@ -11,8 +13,10 @@ public class Apprentice extends Person {
     }
 
     @Override
-    void doWork() {
-        System.out.println("Apprentice worked and it costs " + workCost + "$");
+    void doWork(Car carToFix) {
+        String outputString = String.format("\tApprentice %s helped the tehnician and his work costs %d",
+                this.getEmployeeName(), workCost);
+        System.out.println(outputString);
         addWorkHours(1);
     }
 }

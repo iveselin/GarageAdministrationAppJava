@@ -28,25 +28,54 @@ public class Garage {
     }
 
     public void fixCar(Car inputCar) {
-
+        // TODO: 8.10.2017. managed to get tehnicians, think about how to find apprentices
         switch (inputCar.getWorkNeeded()) {
+
             case MECHANIC:
-                // TODO: 06/10/2017 find a mechanic(he will find apprentice), then give them the car so they can fix it
                 for (Tehnician tehnician : tehnicians) {
 
                     if (tehnician.getFieldOFWork() == FieldOfWorkEnum.MECHANIC) {
-                        tehnician.doWork();
+                        tehnician.doWork(inputCar);
+                        break;
                     }
                 }
                 break;
+
             case PAINTJOB:
-                // TODO: 06/10/2017 find bodyworker and his apprentice, give them the car so they fix it
+                for (Tehnician tehnician : tehnicians) {
+
+                    if (tehnician.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
+                        tehnician.doWork(inputCar);
+                        break;
+                    }
+                }
                 break;
+
             case BOTH:
-                // TODO: 06/10/2017 maybe delete this from project
+                for (Tehnician tehnician : tehnicians) {
+
+                    if (tehnician.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
+                        tehnician.doWork(inputCar);
+                        break;
+                    }
+                }
+                for (Tehnician tehnician : tehnicians) {
+
+                    if (tehnician.getFieldOFWork() == FieldOfWorkEnum.MECHANIC) {
+                        tehnician.doWork(inputCar);
+                        break;
+                    }
+                }
                 break;
+
             default:
-                // TODO: 06/10/2017 what if car is null??
+                System.out.println("That is a mistake, the car is empty");
+        }
+        if (inputCar.isFixed()) {
+            System.out.println("The car is fixed, here is the final cost:");
+            // TODO: 8.10.2017. calculate cost of repair
+        } else {
+            System.out.println("We dont have enough tehnicians, try later");
         }
     }
 }
