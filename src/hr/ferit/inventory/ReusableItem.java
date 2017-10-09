@@ -1,9 +1,13 @@
 package hr.ferit.inventory;
 
+import hr.ferit.working_on.Car;
+
 public class ReusableItem extends Item implements WorkingItem {
 
     private double sizeOfItem;
+
     private ReusableTypeEnum typeEnum;
+
     private double useCost;
 
     public ReusableItem(String itemName, double sizeOfItem, ReusableTypeEnum typeEnum) {
@@ -17,10 +21,17 @@ public class ReusableItem extends Item implements WorkingItem {
     }
 
 
-    @Override
-    public void beUsed() {
+    public ReusableTypeEnum getTypeEnum() {
+        return typeEnum;
+    }
 
-        System.out.println(typeEnum + "was used and it costs" + this.getUseCost());
+    @Override
+    public boolean beUsed(Car carToBeFixed) {
+
+        System.out.println(String.format("\t%s was used and it costs %.2f$", typeEnum, this.getUseCost()));
+        carToBeFixed.addWorkCost(this.getUseCost());
+
+        return true;
 
     }
 

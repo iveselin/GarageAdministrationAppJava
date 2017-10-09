@@ -1,5 +1,7 @@
 package hr.ferit.inventory;
 
+import hr.ferit.working_on.Car;
+
 public class ExpendableItem extends Item implements WorkingItem {
 
     private ExpendableTypeEnum expendableType;
@@ -16,7 +18,7 @@ public class ExpendableItem extends Item implements WorkingItem {
                 quantityLeft = 5;
                 break;
             case SANDPAPER:
-                quantityLeft = 2;
+                quantityLeft = 10;
                 break;
             default:
                 quantityLeft = 0;
@@ -29,9 +31,21 @@ public class ExpendableItem extends Item implements WorkingItem {
     }
 
     @Override
-    public void beUsed() {
-        System.out.println(expendableType + "was used and it costs " + this.getUseCost());
-        quantityLeft--;
+    public boolean beUsed(Car carToBeFixed) {
+
+        if (this.quantityLeft > 0) {
+
+            System.out.println(String.format("\t%s was used and it costs %.2f$", expendableType, this.getUseCost()));
+            carToBeFixed.addWorkCost(this.getUseCost());
+            quantityLeft--;
+            return true;
+
+        } else {
+
+            System.out.println("Oh no, there is not enough " + expendableType + ", you should refill.");
+            return false;
+        }
+
     }
 
 

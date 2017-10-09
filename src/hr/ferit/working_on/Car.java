@@ -41,4 +41,8 @@ public class Car {
     public void setFixed(boolean fixed) {
         isFixed = fixed;
     }
+
+    public void addWorkCost(double costToBeAdded) {
+        this.workingCost += costToBeAdded;
+    }
 }

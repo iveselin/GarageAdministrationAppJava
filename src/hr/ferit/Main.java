@@ -13,8 +13,8 @@ public class Main {
         Car qlientCar2 = new Car("Ranko", "ranko@ranko.hr", WorkNeededEnum.PAINTJOB);
         Car qlientCar3 = new Car("Ranko", "ranko@ranko.hr", WorkNeededEnum.BOTH);
 
-        myGarage.fixCar(qlientCar1);
-        myGarage.fixCar(qlientCar2);
+        //myGarage.fixCar(qlientCar1);
+        //myGarage.fixCar(qlientCar2);
         myGarage.fixCar(qlientCar3);
 
     }

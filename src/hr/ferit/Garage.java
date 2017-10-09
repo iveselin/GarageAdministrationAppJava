@@ -28,14 +28,14 @@ public class Garage {
     }
 
     public void fixCar(Car inputCar) {
-        // TODO: 8.10.2017. managed to get tehnicians, think about how to find apprentices
+
         switch (inputCar.getWorkNeeded()) {
 
             case MECHANIC:
                 for (Tehnician tehnician : tehnicians) {
 
                     if (tehnician.getFieldOFWork() == FieldOfWorkEnum.MECHANIC) {
-                        tehnician.doWork(inputCar);
+                        tehnician.doWork(inputCar, apprentices, reusableItems, expendableItems);
                         break;
                     }
                 }
@@ -45,7 +45,7 @@ public class Garage {
                 for (Tehnician tehnician : tehnicians) {
 
                     if (tehnician.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
-                        tehnician.doWork(inputCar);
+                        tehnician.doWork(inputCar, apprentices, reusableItems, expendableItems);
                         break;
                     }
                 }
@@ -55,14 +55,14 @@ public class Garage {
                 for (Tehnician tehnician : tehnicians) {
 
                     if (tehnician.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
-                        tehnician.doWork(inputCar);
+                        tehnician.doWork(inputCar, apprentices, reusableItems, expendableItems);
                         break;
                     }
                 }
                 for (Tehnician tehnician : tehnicians) {
 
                     if (tehnician.getFieldOFWork() == FieldOfWorkEnum.MECHANIC) {
-                        tehnician.doWork(inputCar);
+                        tehnician.doWork(inputCar, apprentices, reusableItems, expendableItems);
                         break;
                     }
                 }
@@ -72,10 +72,15 @@ public class Garage {
                 System.out.println("That is a mistake, the car is empty");
         }
         if (inputCar.isFixed()) {
-            System.out.println("The car is fixed, here is the final cost:");
-            // TODO: 8.10.2017. calculate cost of repair
+
+            System.out.println(String.format("The car is fixed, here is the final cost: %.2f$", inputCar.getWorkingCost()));
+
         } else {
-            System.out.println("We dont have enough tehnicians, try later");
+            System.out.println("We don't have enough tehnicians, try later");
         }
+    }
+
+    public List<Apprentice> getApprentices() {
+        return apprentices;
     }
 }
