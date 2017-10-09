@@ -7,7 +7,6 @@ public class ExpendableItem extends Item implements WorkingItem {
     private ExpendableTypeEnum expendableType;
     private int quantityLeft;
 
-
     public ExpendableItem(String itemName, ExpendableTypeEnum expendableType) {
 
         super(itemName);
@@ -61,5 +60,13 @@ public class ExpendableItem extends Item implements WorkingItem {
                 return 0.00;
 
         }
+    }
+
+    public ExpendableTypeEnum getExpendableType() {
+        return expendableType;
+    }
+
+    public void addQuantity(int quantity){
+        this.quantityLeft+=quantity;
     }
 }

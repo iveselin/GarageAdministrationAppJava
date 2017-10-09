@@ -51,7 +51,12 @@ public class Tehnician extends Person {
         if (this.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
 
             for (ExpendableItem expendableItem : expendableItems) {
-                expendableItem.beUsed(carToFix);
+                if (!expendableItem.beUsed(carToFix)) {
+                    // TODO: 09/10/2017 when empty stop, dont continue fixing it
+                    System.out.println("\nYou have to refill on expendables, then try to fix the car\n");
+                    return;
+                }
+
             }
             for (ReusableItem reusableItem : reusableItems) {
                 if (reusableItem.getTypeEnum() != ReusableTypeEnum.WRENCH) {

@@ -33,7 +33,7 @@ public class Main {
                     MoneyCalculator.calculateSalary(myGarage);
                     break;
                 case 3:
-                    // TODO: 09/10/2017 make refil utill and use it here
+                    MoneyCalculator.refillExpendables(myGarage);
                     break;
                 case 4:
                     System.out.println("Thank you and goodbye!");

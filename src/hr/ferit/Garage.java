@@ -98,4 +98,8 @@ public class Garage {
     public void changeBankBalance(double bankBalance) {
         this.bankBalance += bankBalance;
     }
+
+    public List<ExpendableItem> getExpendableItems() {
+        return expendableItems;
+    }
 }
