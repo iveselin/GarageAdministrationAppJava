@@ -8,7 +8,7 @@ public class Apprentice extends Person {
     private static final int workCost = 50;
 
     public Apprentice(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN) {
-        super(employeeName, fieldOFWork, accountIBAN, (byte) 0);
+        super(employeeName, fieldOFWork, accountIBAN);
     }
 
     @Override

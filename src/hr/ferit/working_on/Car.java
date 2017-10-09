@@ -34,9 +34,6 @@ public class Car {
         return isFixed;
     }
 
-    public void setWorkingCost(double workingCost) {
-        this.workingCost = workingCost;
-    }
 
     public void setFixed(boolean fixed) {
         isFixed = fixed;

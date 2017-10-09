@@ -9,11 +9,11 @@ public class Person {
     private String accountIBAN;
     private byte workHours;
 
-    Person(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN, byte workHours) {
+    Person(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN) {
         this.employeeName = employeeName;
         this.fieldOFWork = fieldOFWork;
         this.accountIBAN = accountIBAN;
-        this.workHours = workHours;
+        this.workHours = 0;
     }
 
     public String getEmployeeName() {
