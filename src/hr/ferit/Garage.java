@@ -17,6 +17,7 @@ public class Garage {
     private List<ReusableItem> reusableItems = new ArrayList<>();
     private List<ExpendableItem> expendableItems = new ArrayList<>();
     private InfrastructureItem placeToWork = new InfrastructureItem("COBE mechanic and bodyshop");
+    private double bankBalance;
 
     public Garage() {
 
@@ -24,6 +25,7 @@ public class Garage {
         tehnicians = GarageCreationUtil.createTehnicians();
         reusableItems = GarageCreationUtil.createReusableItems();
         expendableItems = GarageCreationUtil.createExpendableItems();
+        bankBalance = 10000;
 
     }
 
@@ -74,6 +76,7 @@ public class Garage {
         if (inputCar.isFixed()) {
 
             System.out.println(String.format("The car is fixed, here is the final cost: %.2f$", inputCar.getWorkingCost()));
+            this.changeBankBalance(inputCar.getWorkingCost());
 
         } else {
             System.out.println("We don't have enough tehnicians, try later");
@@ -82,5 +85,17 @@ public class Garage {
 
     public List<Apprentice> getApprentices() {
         return apprentices;
+    }
+
+    public List<Tehnician> getTehnicians() {
+        return tehnicians;
+    }
+
+    public double getBankBalance() {
+        return bankBalance;
+    }
+
+    public void changeBankBalance(double bankBalance) {
+        this.bankBalance += bankBalance;
     }
 }

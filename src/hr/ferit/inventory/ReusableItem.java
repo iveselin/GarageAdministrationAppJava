@@ -28,14 +28,14 @@ public class ReusableItem extends Item implements WorkingItem {
     @Override
     public boolean beUsed(Car carToBeFixed) {
 
-        System.out.println(String.format("\t%s was used and it costs %.2f$", typeEnum, this.getUseCost()));
+        System.out.println(String.format("\t%s was used and it costs %.2f$", this.getItemName(), this.getUseCost()));
         carToBeFixed.addWorkCost(this.getUseCost());
 
         return true;
 
     }
 
-    public double getUseCost() {
+    private double getUseCost() {
         switch (typeEnum) {
             case HAMMER:
                 useCost = 0.02;

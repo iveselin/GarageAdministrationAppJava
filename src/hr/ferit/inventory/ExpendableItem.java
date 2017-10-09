@@ -35,7 +35,7 @@ public class ExpendableItem extends Item implements WorkingItem {
 
         if (this.quantityLeft > 0) {
 
-            System.out.println(String.format("\t%s was used and it costs %.2f$", expendableType, this.getUseCost()));
+            System.out.println(String.format("\t%s was used and it costs %.2f$", this.getItemName(), this.getUseCost()));
             carToBeFixed.addWorkCost(this.getUseCost());
             quantityLeft--;
             return true;
@@ -48,8 +48,7 @@ public class ExpendableItem extends Item implements WorkingItem {
 
     }
 
-
-    public double getUseCost() {
+    private double getUseCost() {
         switch (expendableType) {
 
             case SANDPAPER:
