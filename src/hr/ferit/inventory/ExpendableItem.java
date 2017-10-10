@@ -11,7 +11,7 @@ public class ExpendableItem extends Item implements WorkingItem {
 
         super(itemName);
         this.expendableType = expendableType;
-
+// TODO: 10/10/2017 dont use this in constr.
         switch (expendableType) {
             case SPRAYPAINT:
                 quantityLeft = 5;

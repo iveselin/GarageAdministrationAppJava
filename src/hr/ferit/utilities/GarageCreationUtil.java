@@ -6,7 +6,7 @@ import hr.ferit.inventory.ReusableItem;
 import hr.ferit.inventory.ReusableTypeEnum;
 import hr.ferit.staff.Apprentice;
 import hr.ferit.staff.FieldOfWorkEnum;
-import hr.ferit.staff.Tehnician;
+import hr.ferit.staff.Technician;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +27,14 @@ public class GarageCreationUtil {
         return apprentices;
     }
 
-    public static List<Tehnician> createTehnicians() {
+    public static List<Technician> createTehnicians() {
 
-        List<Tehnician> tehnicians = new ArrayList<>();
+        List<Technician> technicians = new ArrayList<>();
 
-        tehnicians.add(new Tehnician("Joseph", FieldOfWorkEnum.MECHANIC, "HR987654321", 1));
-        tehnicians.add(new Tehnician("Mladen", FieldOfWorkEnum.BODYWORKER, "HR987654321", 2));
+        technicians.add(new Technician("Joseph", FieldOfWorkEnum.MECHANIC, "HR987654321", 1));
+        technicians.add(new Technician("Mladen", FieldOfWorkEnum.BODYWORKER, "HR987654321", 2));
 
-        return tehnicians;
+        return technicians;
     }
 
     public static List<ReusableItem> createReusableItems() {

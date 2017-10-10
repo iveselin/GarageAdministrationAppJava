@@ -33,9 +33,6 @@ public class Person {
     }
 
 
-    public void doWork(Car inputCar) {
-
-    }
 
     public void addWorkHours(int hoursToAdd) {
         workHours += hoursToAdd;

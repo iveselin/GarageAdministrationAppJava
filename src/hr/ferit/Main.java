@@ -1,6 +1,6 @@
 package hr.ferit;
 
-import hr.ferit.utilities.MoneyCalculator;
+import hr.ferit.utilities.MoneyCalculatorUtil;
 import hr.ferit.working_on.Car;
 import hr.ferit.working_on.WorkNeededEnum;
 
@@ -18,12 +18,14 @@ public class Main {
         System.out.println("Welcome to your garage!");
 
         while (true) {
+
             System.out.println("\nWhat would you like to do(input number in front of desired option):\n" +
                     "\t1. Input new car\n" +
                     "\t2. Calculate sallary\n" +
                     "\t3. Refill on expendables\n" +
                     "\t4. Show bank balance\n" +
                     "\t5. Exit");
+
             inputValue = Main.choseMenuItem(scanner, 5);
             switch (inputValue) {
                 case 1:
@@ -31,10 +33,10 @@ public class Main {
                     myGarage.fixCar(inputedCar);
                     break;
                 case 2:
-                    MoneyCalculator.calculateSalary(myGarage);
+                    MoneyCalculatorUtil.calculateSalary(myGarage);
                     break;
                 case 3:
-                    MoneyCalculator.refillExpendables(myGarage);
+                    MoneyCalculatorUtil.refillExpendables(myGarage);
                     break;
                 case 4:
                     Main.showBankBalance(myGarage.getBankBalance());
@@ -67,13 +69,20 @@ public class Main {
     private static Car inputCarData(Scanner scanner) {
 
         WorkNeededEnum workNeeded = null;
+        String carOwnerName;
+        String carOwnerEmail;
 
         scanner.nextLine();
-        System.out.println("Ok, start with car owners name:");
-        String carOwnerName = scanner.nextLine().trim();
 
-        System.out.println("Now enter owners email: ");
-        String carOwnerEmail = scanner.nextLine().trim().toLowerCase();
+        do {
+            System.out.println("Car owners name:");
+            carOwnerName = scanner.nextLine().trim();
+        } while (carOwnerName.isEmpty());
+
+        do {
+            System.out.println("Owners email: ");
+            carOwnerEmail = scanner.nextLine().trim().toLowerCase();
+        } while (carOwnerEmail.isEmpty());
 
         System.out.println("Choose what needs to be done(number in front of desired option):\n" +
                 "\t1. Mechanic repair\n" +
@@ -92,12 +101,13 @@ public class Main {
                 workNeeded = WorkNeededEnum.BOTH;
                 break;
         }
+
         return new Car(carOwnerName, carOwnerEmail, workNeeded);
     }
 
     private static void showBankBalance(double bankBalance) {
 
-        System.out.println(String.format("Your current bank balance: %.2f", bankBalance));
+        System.out.println(String.format("Your current bank balance: %.2f$", bankBalance));
 
     }
 }

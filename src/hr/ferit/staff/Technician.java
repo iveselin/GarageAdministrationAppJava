@@ -8,37 +8,37 @@ import hr.ferit.working_on.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tehnician extends Person {
+public class Technician extends Person {
 
-    private int numOfAprentices;
+    private int numOfApprentices;
     private static final int workCost = 120;
 
     public static int getWorkCost() {
         return workCost;
     }
 
-    public Tehnician(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN, int numOfAprentices) {
+    public Technician(String employeeName, FieldOfWorkEnum fieldOFWork, String accountIBAN, int numOfApprentices) {
         super(employeeName, fieldOFWork, accountIBAN);
-        this.numOfAprentices = numOfAprentices;
+        this.numOfApprentices = numOfApprentices;
     }
 
 
     public void doWork(Car carToFix, List<Apprentice> apprentices, List<ReusableItem> reusableItems, List<ExpendableItem> expendableItems) {
-
+        //give a technician a car to be fixed, he will find helpers & tools from lists, if there is enough of everything, he will fix the car
         int currentNumOfApprentices = 0;
         List<Apprentice> workingApprentices = new ArrayList<>();
 
-
+        //reserve apprentices
         for (Apprentice apprentice : apprentices) {
 
-            if (this.numOfAprentices > currentNumOfApprentices && this.getFieldOFWork() == apprentice.getFieldOFWork() && apprentice.isAvailable()) {
+            if (this.numOfApprentices > currentNumOfApprentices && this.getFieldOFWork() == apprentice.getFieldOFWork() && apprentice.isAvailable()) {
                 apprentice.setAvailable(false);
                 workingApprentices.add(apprentice);
                 currentNumOfApprentices++;
             }
         }
-
-        if (currentNumOfApprentices < this.numOfAprentices) {
+        //if not enough apprentices, abort
+        if (currentNumOfApprentices < this.numOfApprentices) {
 
             System.out.println("Not enough apprentices, try later");
 
@@ -48,7 +48,7 @@ public class Tehnician extends Person {
 
             return;
         }
-
+        //see if there is enough expendables
         if (this.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
 
             for (ExpendableItem expendableItem : expendableItems) {
@@ -65,17 +65,17 @@ public class Tehnician extends Person {
                 }
             }
         }
-
-        String outputString = String.format("Tehnician %s worked on the car and his work costs %.2f$. He also needed %d apprentice(s):",
-                this.getEmployeeName(), (float) workCost, numOfAprentices);
+        //if everything ok, do the work
+        String outputString = String.format("Technician %s worked on the car and his work costs %.2f$. He also needed %d apprentice(s):",
+                this.getEmployeeName(), (float) workCost, numOfApprentices);
         System.out.println(outputString);
-
+        //make an apprentice do the work and then release them
         for (Apprentice workingApprentice : workingApprentices) {
 
             workingApprentice.doWork(carToFix);
             workingApprentice.setAvailable(true);
         }
-
+        //output the tools used and cost of it
         System.out.println("They used: ");
         if (this.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
 
@@ -101,7 +101,7 @@ public class Tehnician extends Person {
                 }
             }
         }
-
+        //add a work hour for salary calculation, and tell the car that he is fixed, and how much does it cost
         this.addWorkHours(1);
         carToFix.setFixed(true);
         carToFix.addWorkCost(workCost);

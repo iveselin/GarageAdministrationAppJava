@@ -11,7 +11,7 @@ public class Apprentice extends Person {
         super(employeeName, fieldOFWork, accountIBAN);
     }
 
-    @Override
+
     public void doWork(Car carToFix) {
 
         String outputString = String.format("\tApprentice %s helped the tehnician and his work costs %.2f$",
