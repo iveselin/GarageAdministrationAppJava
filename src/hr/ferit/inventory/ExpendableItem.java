@@ -48,6 +48,7 @@ public class ExpendableItem extends Item implements WorkingItem {
     }
 
     private double getUseCost() {
+
         switch (expendableType) {
 
             case SANDPAPER:
@@ -63,10 +64,12 @@ public class ExpendableItem extends Item implements WorkingItem {
     }
 
     public ExpendableTypeEnum getExpendableType() {
+
         return expendableType;
     }
 
-    public void addQuantity(int quantity){
-        this.quantityLeft+=quantity;
+    public void addQuantity(int quantity) {
+
+        this.quantityLeft += quantity;
     }
 }

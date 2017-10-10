@@ -1,6 +1,6 @@
 package hr.ferit.staff;
 
-public enum  FieldOfWorkEnum {
+public enum FieldOfWorkEnum {
     MECHANIC,
     BODYWORKER;
 }

@@ -37,11 +37,11 @@ public class Person {
 
     }
 
-
-
     public void addWorkHours(int hoursToAdd) {
         workHours += hoursToAdd;
     }
 
-
+    public void resetWorkHours() {
+        this.workHours = 0;
+    }
 }

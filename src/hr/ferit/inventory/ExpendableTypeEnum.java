@@ -1,6 +1,6 @@
 package hr.ferit.inventory;
 
-public enum  ExpendableTypeEnum {
+public enum ExpendableTypeEnum {
     SPRAYPAINT,
     SANDPAPER;
 }

@@ -30,37 +30,57 @@ public class Tehnician extends Person {
 
 
         for (Apprentice apprentice : apprentices) {
-            if (currentNumOfApprentices < this.numOfAprentices && apprentice.getFieldOFWork() == this.getFieldOFWork() && apprentice.isAvailable()) {
+
+            if (this.numOfAprentices > currentNumOfApprentices && this.getFieldOFWork() == apprentice.getFieldOFWork() && apprentice.isAvailable()) {
                 apprentice.setAvailable(false);
                 workingApprentices.add(apprentice);
                 currentNumOfApprentices++;
             }
         }
+
         if (currentNumOfApprentices < this.numOfAprentices) {
+
             System.out.println("Not enough apprentices, try later");
+
+            for (Apprentice apprentice : apprentices) {
+                apprentice.setAvailable(true);
+            }
+
             return;
         }
-        // TODO: 9.10.2017. when error return, free the apprentices...
-        if (this.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER)
+
+        if (this.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
+
             for (ExpendableItem expendableItem : expendableItems) {
+
                 if (expendableItem.getQuantityLeft() < 1) {
+
                     System.out.println("You have to refill on your expendables first");
+
+                    for (Apprentice apprentice : apprentices) {
+                        apprentice.setAvailable(true);
+                    }
+
                     return;
                 }
             }
+        }
 
         String outputString = String.format("Tehnician %s worked on the car and his work costs %.2f$. He also needed %d apprentice(s):",
                 this.getEmployeeName(), (float) workCost, numOfAprentices);
         System.out.println(outputString);
 
         for (Apprentice workingApprentice : workingApprentices) {
+
             workingApprentice.doWork(carToFix);
             workingApprentice.setAvailable(true);
         }
+
         System.out.println("They used: ");
         if (this.getFieldOFWork() == FieldOfWorkEnum.BODYWORKER) {
 
             for (ExpendableItem expendableItem : expendableItems) {
+
                 if (!expendableItem.beUsed(carToFix)) {
                     System.out.println("\nYou have to refill on expendables, then try to fix the car\n");
                     return;
@@ -72,6 +92,7 @@ public class Tehnician extends Person {
                     reusableItem.beUsed(carToFix);
                 }
             }
+
         } else {
 
             for (ReusableItem reusableItem : reusableItems) {
@@ -87,7 +108,4 @@ public class Tehnician extends Person {
 
     }
 
-    public int getNumOfAprentices() {
-        return numOfAprentices;
-    }
 }

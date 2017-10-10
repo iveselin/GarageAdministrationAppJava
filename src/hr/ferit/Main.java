@@ -22,8 +22,9 @@ public class Main {
                     "\t1. Input new car\n" +
                     "\t2. Calculate sallary\n" +
                     "\t3. Refill on expendables\n" +
-                    "\t4. Exit");
-            inputValue = Main.choseMenuItem(scanner, 4);
+                    "\t4. Show bank balance\n" +
+                    "\t5. Exit");
+            inputValue = Main.choseMenuItem(scanner, 5);
             switch (inputValue) {
                 case 1:
                     inputedCar = Main.inputCarData(scanner);
@@ -36,6 +37,9 @@ public class Main {
                     MoneyCalculator.refillExpendables(myGarage);
                     break;
                 case 4:
+                    Main.showBankBalance(myGarage.getBankBalance());
+                    break;
+                case 5:
                     System.out.println("Thank you and goodbye!");
                     return;
             }
@@ -89,5 +93,11 @@ public class Main {
                 break;
         }
         return new Car(carOwnerName, carOwnerEmail, workNeeded);
+    }
+
+    private static void showBankBalance(double bankBalance) {
+
+        System.out.println(String.format("Your current bank balance: %.2f", bankBalance));
+
     }
 }

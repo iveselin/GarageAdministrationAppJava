@@ -1,6 +1,6 @@
 package hr.ferit.inventory;
 
-public enum  ReusableTypeEnum {
+public enum ReusableTypeEnum {
     WRENCH,
     HAMMER,
     SANDER,

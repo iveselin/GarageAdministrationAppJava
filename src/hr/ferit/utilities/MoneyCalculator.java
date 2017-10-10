@@ -43,8 +43,9 @@ public class MoneyCalculator {
     }
 
     public static void calculateSalary(Garage currentGarage) {
+
         double salary;
-        System.out.println(String.format("Current bank balance: %.2f$\n", currentGarage.getBankBalance()));
+
         for (Tehnician tehnician : currentGarage.getTehnicians()) {
 
             salary = tehnician.getWorkHours() * Tehnician.getWorkCost() * 0.7;
@@ -53,6 +54,7 @@ public class MoneyCalculator {
                     tehnician.getEmployeeName(), tehnician.getWorkHours(), salary));
 
             currentGarage.changeBankBalance(-salary);
+            tehnician.resetWorkHours();
         }
         for (Apprentice apprentice : currentGarage.getApprentices()) {
 
@@ -62,8 +64,8 @@ public class MoneyCalculator {
                     apprentice.getEmployeeName(), apprentice.getWorkHours(), salary));
 
             currentGarage.changeBankBalance(-salary);
+            apprentice.resetWorkHours();
         }
-        System.out.println(String.format("\nBank balance after paying: %.2f$", currentGarage.getBankBalance()));
 
     }
 }

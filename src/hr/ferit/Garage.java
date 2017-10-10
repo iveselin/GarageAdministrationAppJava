@@ -26,6 +26,7 @@ public class Garage {
         reusableItems = GarageCreationUtil.createReusableItems();
         expendableItems = GarageCreationUtil.createExpendableItems();
         bankBalance = 10000;
+        placeToWork.setCurrentlyAvailable(false);
 
     }
 
@@ -77,6 +78,9 @@ public class Garage {
 
             System.out.println(String.format("The car is fixed, here is the final cost: %.2f$", inputCar.getWorkingCost()));
             this.changeBankBalance(inputCar.getWorkingCost());
+
+            System.out.println(String.format("You should contact %s, here is his email: %s",
+                    inputCar.getOwnerName(), inputCar.getOwnerEmail()));
 
         } else {
             System.out.println("We don't have enough tehnicians, try later");

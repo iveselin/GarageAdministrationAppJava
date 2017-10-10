@@ -13,11 +13,13 @@ public class Apprentice extends Person {
 
     @Override
     public void doWork(Car carToFix) {
+
         String outputString = String.format("\tApprentice %s helped the tehnician and his work costs %.2f$",
                 this.getEmployeeName(), (float) workCost);
         System.out.println(outputString);
+
         carToFix.addWorkCost(workCost);
-        addWorkHours(1);
+        this.addWorkHours(1);
     }
 
     public static int getApprenticeWorkCost() {
